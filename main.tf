@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-2"
+  region = "ca-central-1"
 }
 
 resource "aws_vpc" "myvpc" {
@@ -17,14 +17,14 @@ resource "aws_vpc" "myvpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "NAGU"
+    Name = "SIBI"
   }
 }
 
 resource "aws_subnet" "pubsub" {
   vpc_id     = aws_vpc.myvpc.id
   cidr_block = "10.0.1.0/24"
- availability_zone = "us-east-2a" 
+ availability_zone = "ca-central-1a" 
   tags = {
     Name = "publicsub"
   }
@@ -33,7 +33,7 @@ resource "aws_subnet" "pubsub" {
 resource "aws_subnet" "pvtsub" {
   vpc_id     = aws_vpc.myvpc.id
   cidr_block = "10.0.2.0/24"
-availability_zone = "us-east-2b"
+availability_zone = "ca-central-1b"
   tags = {
     Name = "privatesub"
   }
@@ -120,12 +120,12 @@ resource "aws_security_group" "allow_all" {
 
 resource "aws_instance" "public-machine" {
   ami           = "ami-0beaa649c482330f7"
-  availability_zone = "us-east-2a"
+  availability_zone = "ca-central-1a"
   instance_type = "t2.micro"
   tags = {
-    Name = "nagupub"
+    Name = "sibipub"
   }
-  key_name = "ohiokey"
+  key_name = "1213"
   vpc_security_group_ids= [aws_security_group.allow_all.id]
   subnet_id      = aws_subnet.pubsub.id
   associate_public_ip_address = true
@@ -134,12 +134,12 @@ resource "aws_instance" "public-machine" {
 
 resource "aws_instance" "private-machine" {
   ami           = "ami-0beaa649c482330f7"
-  availability_zone = "us-east-2b"
+  availability_zone = "ca-central-1b"
   instance_type = "t2.micro"
   tags = {
-    Name = "nagupvt"
+    Name = "sibipvt"
   }
-  key_name = "ohiokey"
+  key_name = "1213"
   vpc_security_group_ids= [aws_security_group.allow_all.id]
   subnet_id      = aws_subnet.pvtsub.id
   associate_public_ip_address = false
