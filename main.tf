@@ -119,7 +119,7 @@ resource "aws_security_group" "allow_all" {
 }
 
 resource "aws_instance" "public-machine" {
-  ami           = "ami-0beaa649c482330f7"
+  ami           = "ami-03520d0f674d64df7"
   availability_zone = "ca-central-1a"
   instance_type = "t2.micro"
   tags = {
@@ -133,7 +133,7 @@ resource "aws_instance" "public-machine" {
 }
 
 resource "aws_instance" "private-machine" {
-  ami           = "ami-0beaa649c482330f7"
+  ami           = "ami-03520d0f674d64df7"
   availability_zone = "ca-central-1b"
   instance_type = "t2.micro"
   tags = {
