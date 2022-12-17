@@ -133,7 +133,7 @@ resource "aws_instance" "public-machine" {
 }
 
 resource "aws_instance" "private-machine" {
-  ami           = "ami-03520d0f674d64df7"
+  ami           = "ami-06c3426233c180fef"
   availability_zone = "ca-central-1b"
   instance_type = "t2.micro"
   tags = {
