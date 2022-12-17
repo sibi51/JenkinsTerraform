@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("get url from git"){
             steps{
-                git url : "https://github.com/nagaraj1304/JenkinsTerraform.git", branch : "main"
+                git url : "https://github.com/sibi51/JenkinsTerraform.git", branch : "main"
             }
         }
         stage("terraform init"){
