@@ -142,6 +142,6 @@ resource "aws_instance" "private-machine" {
   key_name = "1213"
   vpc_security_group_ids= [aws_security_group.allow_all.id]
   subnet_id      = aws_subnet.pvtsub.id
-  associate_public_ip_address = false
+  associate_public_ip_address = true
 
 }
